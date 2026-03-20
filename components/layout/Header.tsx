@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ChevronDown, User } from "lucide-react";
 
 export default function Header() {
   return (
@@ -15,47 +16,79 @@ export default function Header() {
         </div>
 
         <div className="w-223.5 h-9 flex gap-1.5">
-          <div className="flex gap-16  w-194 h-9">
-            <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
-              <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                Home
-              </div>
-            </div>
-            <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
-              <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                Home
-              </div>
-            </div>
-            <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
-              <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                Home
-              </div>
-            </div>
-            <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
-              <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                Home
-              </div>
-            </div>
-            <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
-              <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                Home
-              </div>
-            </div>
-            <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
-              <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                Home
-              </div>
-            </div>
-            <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
-              <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                Home
-              </div>
+          {/* <div className="flex gap-16  w-194 h-9"> */}
+          <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
+            <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+              Home
             </div>
           </div>
-          <div className="flex gap-2 w-23.5 h-9">
-            
+          <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
+            <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+              Home
+            </div>
+          </div>
+          <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
+            <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+              Home
+            </div>
+          </div>
+          <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
+            <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+              Home
+            </div>
+          </div>
+          <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
+            <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+              Home
+            </div>
+          </div>
+          <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
+            <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+              Home
+            </div>
+          </div>
+          <div className="flex w-19.25 h-9 px-4 pt-1 pb-2 gap-2.5">
+            <div className="w-11.25 h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+              Home
+            </div>
           </div>
         </div>
+        <div className="flex gap-2 w-23.5 h-9">
+          <div className="flex w-23.5 h-9 gap-2 items-center">
+            <div className="w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center border border-gray-200">
+              <svg
+                className="w-5 h-5 text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+            <span className="text-base font-semibold leading-6 items-center justify-center">
+              Profile
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-4 h-4 text-gray-500"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+        {/* <ChevronDown className="w-4 h-4 text-gray-500 " /> */}
+        {/* </div> */}
       </div>
     </header>
   );
