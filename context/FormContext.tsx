@@ -2,15 +2,20 @@
 
 import React, { useState, ReactNode, useContext, createContext } from "react";
 import { ActivityDetailsType } from "@/schemas/activitySchema";
+import { LocationDetailsType } from "@/schemas/locationSchema";
 
 interface FormData {
   activityDetails?: ActivityDetailsType;
-  locationDetails?: any; // TODO: define later
+  locationDetails?: LocationDetailsType;
 }
 
 interface FormContextType {
   formData: FormData;
-  updateFormData: (step: keyof FormData, data: any) => void;
+  // This generic ensures that the data exactly matches the step you are updating
+  updateFormData: <K extends keyof FormData>(
+    step: K,
+    data: FormData[K],
+  ) => void;
   currentStep: number;
   setCurrentStep: (step: number) => void;
   resetForm: () => void;
@@ -22,7 +27,10 @@ export function FormProvider({ children }: { children: ReactNode }) {
   const [formData, setFormData] = useState<FormData>({});
   const [currentStep, setCurrentStep] = useState(1);
 
-  const updateFormData = (step: keyof FormData, data: any) => {
+  const updateFormData = <K extends keyof FormData>(
+    step: K,
+    data: FormData[K],
+  ) => {
     setFormData((prev) => ({ ...prev, [step]: data }));
   };
 
