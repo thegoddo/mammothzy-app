@@ -51,5 +51,5 @@ export function useFormContext() {
   if (!context) {
     throw new Error("useFormContext must be used within a FormProvider");
   }
-  throw context;
+  return context;
 }
