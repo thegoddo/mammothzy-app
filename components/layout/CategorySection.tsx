@@ -1,42 +1,57 @@
 "use client";
-import CheckboxItem from "./CheckboxItem";
 import { useState } from "react";
+import RadioItem from "./RadioItem";
 
-export default function CategorySection() {
-  const [showOtherInput, setShowOtherInput] = useState(false);
+interface CategorySectionProps {
+  listType: "categories" | "activity" | "location";
+  value?: string;
+  onChange?: (value: string) => void;
+}
 
-  const categories = [
-    "Adventure & Games",
-    "Creative Expression",
-    "Food & Drink",
-    "Learning & Development",
-    "Sports and Fitness",
-    "Volunteering",
-    "Other",
-  ];
+export default function CategorySection({
+  listType,
+  value,
+  onChange,
+}: CategorySectionProps) {
+  const [internalSelected, setInternalSelected] = useState(value || "");
 
-  const handleCheckboxChange = (label: string, isChecked: boolean) => {
-    if (label === "Other") {
-      setShowOtherInput(isChecked);
-    }
+  const lists = {
+    categories: [
+      "Adventure & Games",
+      "Creative Expression",
+      "Food & Drink",
+      "Learning & Development",
+      "Sports and Fitness",
+      "Volunteering",
+      "Other",
+    ],
+    activity: ["Indoor", "Outdoor", "Virtual"],
+    location: ["Provider Location", "User Location"],
   };
 
-  return (
-    <div className="flex flex-col gap-4 w-[596px]">
-      <label className="text-xs font-medium leading-5 text-[#1A1A1A]">
-        Select the best category to describe your activity{" "}
-        <span className="text-[#FF4D4F]">*</span>
-      </label>
+  const handleSelect = (label: string) => {
+    setInternalSelected(label);
+    if (onChange) onChange(label);
+  };
 
+  const traverseList = lists[listType];
+
+  return (
+    <div className="flex flex-col gap-[14px] w-[596px]">
       <div className="flex flex-col gap-3">
-        {categories.map((cat) => (
-          <CheckboxItem key={cat} label={cat} onChange={handleCheckboxChange} />
+        {traverseList?.map((item) => (
+          <RadioItem
+            key={item}
+            label={item}
+            name={listType} // Shared name makes them act as a radio group
+            isSelected={internalSelected === item}
+            onSelect={handleSelect}
+          />
         ))}
       </div>
 
-      {/* Conditional Text Box - Using your Textfield spec */}
-      {showOtherInput && (
-        <div className="mt-2 transition-all duration-200 ease-in-out">
+      {listType === "categories" && internalSelected === "Other" && (
+        <div className="mt-2 animate-in fade-in duration-200">
           <input
             type="text"
             placeholder="Specify the category"
