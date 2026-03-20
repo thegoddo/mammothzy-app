@@ -8,6 +8,7 @@ import {
   ActivityDetailsType,
 } from "../../schemas/activitySchema";
 import { useFormContext } from "../../context/FormContext";
+import CategorySection from "../layout/CategorySection";
 
 export default function ActivityDetailsForm() {
   const { formData, updateFormData, setCurrentStep } = useFormContext();
@@ -53,6 +54,13 @@ export default function ActivityDetailsForm() {
               placeholder="Eg: Cooking class in Palo Alto"
               className="w-full h-[42px] px-4 py-2 bg-white border border-[#E5E5E5] rounded-full text-sm placeholder:text-[#9CA3AF] focus:outline-none focus:ring-1 focus:ring-black transition-all"
             />
+
+            <label className="font-sans font-medium text-xs leading-5">
+              Select the best category to describe your activity{" "}
+              <span className="text-[#FF4D4F]">*</span>
+            </label>
+            <CategorySection />
+            <div className="flex w-[158px] h-[52px] gap-[12px]"></div>
             <div className="flex justify-end pt-4">
               <button
                 type="submit"
