@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const activityDetailSchema = z
+export const activityDetailsSchema = z
   .object({
     activityName: z.string().min(3, "Activity must be at least 3 characters"),
     category: z.enum(
@@ -48,4 +48,4 @@ export const activityDetailSchema = z
     path: ["maxMembers"],
   });
 
-export type ActivityDetailsType = z.infer<typeof activityDetailSchema>;
+export type ActivityDetailsType = z.infer<typeof activityDetailsSchema>;
