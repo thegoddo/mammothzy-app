@@ -1,4 +1,6 @@
 import { Flag, MapPin } from "lucide-react";
+import ActivityDetailsForm from "../form/ActivityDetailsForm";
+import LocationDetailsForm from "../form/LocationDetailsForm";
 export default function Main() {
   return (
     <main className="flex flex-col w-[1440px] min-h-[1137px] pt-8 pb-8 px-[112px] gap-[60px] bg-white border-b border-[#E7E7E7]">
@@ -19,12 +21,14 @@ export default function Main() {
 
             <button className="flex w-[212px] h-[48px] items-center px-7 py-2 gap-[10px] border-b border-[#E7E7E7] shadow-[0px_1px_2px_0px_#55494B0D]">
               <MapPin className="w-6 h-6" />
-              <span className="font-semibold text-base leading-6">
+              <span className="font-semibold text-base leading-6 whitespace-nowrap">
                 Location Details
               </span>
             </button>
           </div>
           <div className="border-r border-[#E7E7E7] h-[1010px] w-0" />
+          <ActivityDetailsForm />
+          {/* <LocationDetailsForm /> */}
         </div>
       </div>
     </main>
