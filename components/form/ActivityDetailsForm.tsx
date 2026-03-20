@@ -14,6 +14,7 @@ import CategorySection from "../layout/CategorySection";
 import FormField from "../ui/FormField";
 import TextInput from "../ui/TextInput";
 import TextArea from "../ui/TextArea";
+import HoverArrowButton from "../ui/HoveredButton";
 
 export default function ActivityDetailsForm() {
   const { formData, updateFormData, setCurrentStep } = useFormContext();
@@ -34,7 +35,7 @@ export default function ActivityDetailsForm() {
   };
 
   return (
-    <div className="flex flex-col w-[596px] bg-white rounded-[12px] shrink-0">
+    <div className="flex flex-col w-149 bg-white rounded-xl shrink-0">
       {/* Header */}
       <div className="flex w-full mb-6">
         <h3 className="font-sans font-bold text-[18px] leading-6 text-[#2E2B2B]">
@@ -146,13 +147,8 @@ export default function ActivityDetailsForm() {
         </FormField>
 
         {/* Submit Button */}
-        <div className="flex justify-end pt-4">
-          <button
-            type="submit"
-            className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-all font-medium text-sm"
-          >
-            Save and Continue
-          </button>
+        <div className="flex  pt-4">
+          <HoverArrowButton text="Save and Continue"></HoverArrowButton>
         </div>
       </form>
     </div>

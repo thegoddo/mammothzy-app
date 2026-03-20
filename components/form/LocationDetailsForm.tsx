@@ -18,6 +18,7 @@ import {
   locationDetailsSchema,
   LocationDetailsType,
 } from "@/schemas/locationSchema";
+import HoverArrowButton from "../ui/HoveredButton";
 
 export default function LocationDetailsForm() {
   const { formData, updateFormData, setCurrentStep } = useFormContext();
@@ -76,7 +77,7 @@ export default function LocationDetailsForm() {
   const goBack = () => setCurrentStep(1);
 
   return (
-    <div className="flex flex-col w-[596px] bg-white rounded-[12px] shrink-0">
+    <div className="flex flex-col w-149 bg-white rounded-xl shrink-0">
       {/* Header */}
       <div className="flex flex-col w-full mb-6">
         <h3 className="font-sans font-bold text-[18px] leading-6 text-[#2E2B2B]">
@@ -140,7 +141,7 @@ export default function LocationDetailsForm() {
               required
               error={errors.state?.message}
             >
-              <div className="relative w-full h-[42px]">
+              <div className="relative w-full h-10.5">
                 {/* Editable Input with Datalist */}
                 <input
                   {...register("state")}
@@ -292,20 +293,15 @@ export default function LocationDetailsForm() {
         </div>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between pt-8 border-t border-[#E5E5E5] mt-4">
+        <div className="flex w-[197px] h-[46px] gap-[10px]">
           <button
             type="button"
             onClick={goBack}
             className="px-8 py-3 rounded-full border border-[#E5E5E5] text-[#1A1A1A] hover:bg-gray-50 transition-all font-medium text-sm"
           >
-            Back
+            Previous
           </button>
-          <button
-            type="submit"
-            className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-all font-medium text-sm"
-          >
-            Save and Continue
-          </button>
+          <HoverArrowButton text="Submit" />
         </div>
       </form>
     </div>

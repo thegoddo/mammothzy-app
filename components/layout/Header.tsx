@@ -15,19 +15,16 @@ export default function Header() {
         </div>
 
         <div className="w-223.5 h-9 flex gap-6">
-          {/* Fixed all nav links: w-19.25 -> w-[77px] */}
-          {["Home", "Home", "Home", "Home", "Home", "Home", "Home"].map(
-            (link, index) => (
-              <div
-                key={index}
-                className="flex w-[77px] h-9 px-4 pt-1 pb-2 gap-[10px]"
-              >
-                <div className="w-full h-6 text-base font-normal leading-6 text-[#6B6B6B]">
-                  {link}
-                </div>
+          {["", "", "", "", "", "", ""].map((link, index) => (
+            <div
+              key={index}
+              className="flex w-[77px] h-9 px-4 pt-1 pb-2 gap-[10px]"
+            >
+              <div className="w-full h-6 text-base font-normal leading-6 text-[#6B6B6B]">
+                {link}
               </div>
-            ),
-          )}
+            </div>
+          ))}
         </div>
 
         <button className="flex items-center gap-2 h-9 cursor-pointer hover:opacity-80 transition-opacity outline-none">

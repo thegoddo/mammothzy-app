@@ -8,8 +8,8 @@ export default function Main() {
   const { currentStep, setCurrentStep } = useFormContext();
 
   return (
-    <main className="flex flex-col w-[1440px] min-h-[1137px] pt-8 pb-8 px-[112px] gap-[60px] bg-white border-b border-[#E7E7E7]">
-      <div className="flex flex-col w-[1216px] h-[1073px] gap-[32px]">
+    <main className="flex flex-col w-360 min-h-284.25 pt-8 pb-8 px-28 gap-15 bg-white border-b border-[#E7E7E7]">
+      <div className="flex flex-col w-[1216px] h-[1073px] gap-8">
         <div className="flex w-[1216px] h-[31px] gap-[10px]">
           <h2 className="font-sans font-bold text-[24px] leading-[130%] align-middle text-[#1A1A1A]">
             Create new Activity
@@ -19,7 +19,6 @@ export default function Main() {
         <div className="flex flex-row items-start gap-[32px]">
           {/* Sidebar */}
           <div className="sticky top-0 flex flex-col w-[212px] bg-white z-10 gap-2">
-            {/* Step 1 Button */}
             <button
               type="button"
               onClick={() => setCurrentStep(1)}
@@ -30,10 +29,11 @@ export default function Main() {
               }`}
             >
               <Flag className="w-5 h-5" />
-              <span className="text-[15px] leading-6">Activity Details</span>
+              <span className="text-[15px] leading-6 whitespace-nowrap">
+                Activity Details
+              </span>
             </button>
 
-            {/* Step 2 Button */}
             <button
               type="button"
               onClick={() => setCurrentStep(2)}
@@ -50,9 +50,11 @@ export default function Main() {
             </button>
           </div>
 
-          <div className="border-r border-[#E7E7E7] h-[1010px] w-0" />
+          <div
+            className="border-r border-[#E7E7E7] w-0 transition-all duration-500 ease-in-out shrink-0"
+            style={{ height: currentStep === 1 ? "1010px" : "676px" }}
+          />
 
-          {/* Dynamic Form Rendering */}
           {currentStep === 1 && <ActivityDetailsForm />}
           {currentStep === 2 && <LocationDetailsForm />}
         </div>
