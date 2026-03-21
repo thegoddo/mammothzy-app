@@ -12,7 +12,7 @@ export default function Main() {
 
   return (
     <main className="relative flex flex-col w-[1440px] min-h-screen pt-8 pb-8 px-[112px] gap-[60px] bg-white border-b border-[#E7E7E7] mx-auto overflow-visible">
-      {/* SUCCESS OVERLAY: Only shows when isSubmitted is true */}
+      {/* SUCCESS OVERLAY */}
       {isSubmitted && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/20 backdrop-blur-sm">
           <Success onClose={() => setIsSubmitted(false)} />
@@ -29,36 +29,50 @@ export default function Main() {
         <div className="flex flex-row items-stretch gap-8 overflow-visible">
           {/* Sidebar */}
           <aside className="sticky top-[100px] flex flex-col w-[212px] shrink-0 bg-white z-10 gap-2 self-start h-fit">
+            {/* Activity Details Tab */}
             <button
               type="button"
               onClick={() => setCurrentStep(1)}
               className={`flex w-full h-[48px] items-center px-4 py-2 gap-[12px] rounded-[8px] transition-all text-left ${
                 currentStep === 1
-                  ? "bg-[#FAFAFB] shadow-[0px_1px_2px_0px_#55494B0D] text-[#1A1A1A] font-bold"
-                  : "bg-transparent text-[#8A8A8A] font-medium hover:bg-gray-50"
+                  ? "bg-[#F7F7F7] shadow-[0px_1px_2px_0px_#55494B0D]"
+                  : "bg-transparent hover:bg-gray-50"
               }`}
             >
               <Flag
-                className={`w-5 h-5 ${currentStep === 1 ? "text-[#1A1A1A]" : "text-[#8A8A8A]"}`}
+                className={`w-5 h-5 transition-colors ${currentStep === 1 ? "text-[#1A1A1A]" : "text-[#8A8A8A]"}`}
               />
-              <span className="text-[15px] font-medium leading-6 whitespace-nowrap">
+              <span
+                className={`text-[15px] leading-6 whitespace-nowrap transition-colors ${
+                  currentStep === 1
+                    ? "text-[#1A1A1A] font-bold"
+                    : "text-[#8A8A8A] font-medium"
+                }`}
+              >
                 Activity Details
               </span>
             </button>
 
+            {/* Location Details Tab */}
             <button
               type="button"
               onClick={() => setCurrentStep(2)}
               className={`flex w-full h-[48px] items-center px-4 py-2 gap-[12px] rounded-[8px] transition-all text-left ${
                 currentStep === 2
-                  ? "bg-[#FAFAFB] shadow-[0px_1px_2px_0px_#55494B0D] text-[#1A1A1A] font-bold"
-                  : "bg-transparent text-[#8A8A8A] font-medium hover:bg-gray-50"
+                  ? "bg-[#F7F7F7] shadow-[0px_1px_2px_0px_#55494B0D]"
+                  : "bg-transparent hover:bg-gray-50"
               }`}
             >
               <MapPin
-                className={`w-5 h-5 ${currentStep === 2 ? "text-[#1A1A1A]" : "text-[#8A8A8A]"}`}
+                className={`w-5 h-5 transition-colors ${currentStep === 2 ? "text-[#1A1A1A]" : "text-[#8A8A8A]"}`}
               />
-              <span className="text-[15px] font-medium leading-6 whitespace-nowrap">
+              <span
+                className={`text-[15px] leading-6 whitespace-nowrap transition-colors ${
+                  currentStep === 2
+                    ? "text-[#1A1A1A] font-bold"
+                    : "text-[#8A8A8A] font-medium"
+                }`}
+              >
                 Location Details
               </span>
             </button>
