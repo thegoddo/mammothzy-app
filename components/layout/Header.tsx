@@ -14,7 +14,7 @@ export default function Header() {
           />
         </div>
 
-        <div className="w-223.5 h-9 flex gap-6">
+        <div className="w-[894px] h-9 flex gap-6">
           {["", "", "", "", "", "", ""].map((link, index) => (
             <div
               key={index}

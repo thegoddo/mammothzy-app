@@ -35,7 +35,7 @@ export default function ActivityDetailsForm() {
   };
 
   return (
-    <div className="flex flex-col w-149 bg-white rounded-xl shrink-0">
+    <div className="flex flex-col w-[596px] bg-white rounded-xl shrink-0">
       {/* Header */}
       <div className="flex w-full mb-6">
         <h3 className="font-sans font-bold text-[18px] leading-6 text-[#2E2B2B]">

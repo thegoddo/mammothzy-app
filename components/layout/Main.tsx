@@ -8,7 +8,7 @@ export default function Main() {
   const { currentStep, setCurrentStep } = useFormContext();
 
   return (
-    <main className="flex flex-col w-360 min-h-284.25 pt-8 pb-8 px-28 gap-15 bg-white border-b border-[#E7E7E7]">
+    <main className="flex flex-col w-[1440px] min-h-[1137px] pt-8 pb-8 px-[112px] gap-[60px] bg-white border-b border-[#E7E7E7] mx-auto">
       <div className="flex flex-col w-[1216px] h-[1073px] gap-8">
         <div className="flex w-[1216px] h-[31px] gap-[10px]">
           <h2 className="font-sans font-bold text-[24px] leading-[130%] align-middle text-[#1A1A1A]">
@@ -50,11 +50,11 @@ export default function Main() {
             </button>
           </div>
 
+          {/* Vertical Divider Fix */}
           <div
-            className="border-r border-[#E7E7E7] w-0 transition-all duration-500 ease-in-out shrink-0"
+            className="w-px bg-[#E7E7E7] transition-all duration-500 ease-in-out shrink-0"
             style={{ height: currentStep === 1 ? "1010px" : "676px" }}
           />
-
           {currentStep === 1 && <ActivityDetailsForm />}
           {currentStep === 2 && <LocationDetailsForm />}
         </div>
