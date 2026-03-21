@@ -12,7 +12,6 @@ export default function Main() {
 
   return (
     <main className="relative flex flex-col w-[1440px] min-h-screen pt-8 pb-8 px-[112px] gap-[60px] bg-white border-b border-[#E7E7E7] mx-auto overflow-visible">
-      {/* SUCCESS OVERLAY */}
       {isSubmitted && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/20 backdrop-blur-sm">
           <Success onClose={() => setIsSubmitted(false)} />
@@ -27,9 +26,7 @@ export default function Main() {
         </div>
 
         <div className="flex flex-row items-stretch gap-8 overflow-visible">
-          {/* Sidebar */}
           <aside className="sticky top-[100px] flex flex-col w-[212px] shrink-0 bg-white z-10 gap-2 self-start h-fit">
-            {/* Activity Details Tab */}
             <button
               type="button"
               onClick={() => setCurrentStep(1)}
@@ -53,7 +50,6 @@ export default function Main() {
               </span>
             </button>
 
-            {/* Location Details Tab */}
             <button
               type="button"
               onClick={() => setCurrentStep(2)}
@@ -78,13 +74,11 @@ export default function Main() {
             </button>
           </aside>
 
-          {/* Vertical Divider */}
           <div
             className="w-px bg-[#E7E7E7] transition-all duration-500 ease-in-out shrink-0"
             style={{ height: currentStep === 1 ? "1010px" : "676px" }}
           />
 
-          {/* Form Content Area */}
           <div className="flex-1 min-w-0">
             {currentStep === 1 && <ActivityDetailsForm />}
             {currentStep === 2 && (

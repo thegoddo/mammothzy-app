@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { useFormContext } from "../../context/FormContext";
-import ActivityDetailsForm from "../form/ActivityDetailsForm";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";

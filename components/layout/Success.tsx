@@ -8,8 +8,8 @@ interface SuccessProps {
 export function Success({ onClose }: SuccessProps) {
   return (
     <div className="relative flex flex-col items-center justify-center w-[510px] h-[211px] rounded-[16px] p-[32px] bg-white shadow-[20px_20px_20px_0px_#00000014] border border-[#E7E7E7]">
-      {/* Close Button - Positioned in the top right corner */}
       <button
+        title="success"
         onClick={onClose}
         className="absolute top-4 right-4 flex items-center justify-center w-8 h-8 rounded-full bg-[#F2F2F2] hover:bg-gray-200 transition-colors"
       >
@@ -27,11 +27,8 @@ export function Success({ onClose }: SuccessProps) {
         </svg>
       </button>
 
-      {/* Content Container */}
       <div className="flex flex-col items-center gap-[24px]">
-        {/* Success Icon Circle */}
         <div className="flex items-center justify-center w-[100px] h-[100px] rounded-full bg-[#DCE2FF]">
-          {/* Replace with your green checkmark image */}
           <div className="relative w-[60px] h-[60px]">
             <Image
               src="/success.png"
@@ -42,7 +39,6 @@ export function Success({ onClose }: SuccessProps) {
           </div>
         </div>
 
-        {/* Text */}
         <h3 className="font-sans font-bold text-[28px] leading-none text-[#1A1A1A] text-center">
           Form Submitted
         </h3>

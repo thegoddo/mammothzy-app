@@ -43,7 +43,7 @@ export default function CategorySection({
           <RadioItem
             key={item}
             label={item}
-            name={listType} // Shared name makes them act as a radio group
+            name={listType} 
             isSelected={internalSelected === item}
             onSelect={handleSelect}
           />

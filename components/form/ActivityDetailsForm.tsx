@@ -9,7 +9,6 @@ import {
 } from "../../schemas/activitySchema";
 import { useFormContext } from "../../context/FormContext";
 
-// Import your new modular components
 import CategorySection from "../layout/CategorySection";
 import FormField from "../ui/FormField";
 import TextInput from "../ui/TextInput";
@@ -43,7 +42,6 @@ export default function ActivityDetailsForm() {
         </h3>
       </div>
 
-      {/* Form Container */}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col w-full gap-6"
@@ -122,7 +120,6 @@ export default function ActivityDetailsForm() {
           />
         </FormField>
 
-        {/* Member Range Selector */}
         <FormField label="How many members can take part in the activity?">
           <div className="flex items-center gap-[16px] w-full">
             <TextInput
@@ -146,7 +143,6 @@ export default function ActivityDetailsForm() {
           )}
         </FormField>
 
-        {/* Submit Button */}
         <div className="flex  pt-4">
           <HoverArrowButton text="Save and Continue"></HoverArrowButton>
         </div>

@@ -5,16 +5,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormContext } from "../../context/FormContext";
 
-// Constants
 import { INDIAN_STATES } from "@/constants/state";
 import { COUNTRY_CODES } from "@/constants/countries";
 
-// Modular UI components
 import FormField from "../ui/FormField";
 import TextInput from "../ui/TextInput";
 import HoverArrowButton from "../ui/HoveredButton";
 
-// Schema
 import {
   locationDetailsSchema,
   LocationDetailsType,
@@ -27,7 +24,6 @@ interface LocationDetailsFormProps {
 export default function LocationDetailsForm({ onComplete }: LocationDetailsFormProps) {
   const { formData, updateFormData, setCurrentStep } = useFormContext();
 
-  // --- Custom Phone Dropdown State ---
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(
@@ -38,7 +34,6 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -55,7 +50,6 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
       c.code.includes(countrySearch),
   );
 
-  // --- Form Initialization ---
   const {
     register,
     handleSubmit,
@@ -67,22 +61,17 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
     defaultValues: formData.locationDetails || {},
   });
 
-  // Sync country code to react-hook-form state
   useEffect(() => {
     setValue("countryCode", selectedCountry.code);
   }, [selectedCountry, setValue]);
 
-  // --- Submission Logic ---
   const onSubmit = (data: LocationDetailsType) => {
-    // 1. Update the global context with the final validated data
     updateFormData("locationDetails", data);
     
-    // 2. Trigger the Success overlay in Main.tsx
     onComplete();
   };
 
   const goBack = () => {
-    // Save current draft to context before switching back to Step 1
     updateFormData("locationDetails", getValues());
     setCurrentStep(1);
   };
@@ -99,7 +88,6 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full gap-6">
-        {/* Address Fields */}
         <FormField label="Address Line 1" required error={errors.address1?.message}>
           <TextInput
             {...register("address1")}
@@ -123,7 +111,6 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
           />
         </FormField>
 
-        {/* City & State Row */}
         <div className="flex gap-4 w-full">
           <div className="flex-1">
             <FormField label="City" required error={errors.city?.message}>
@@ -158,12 +145,10 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
 
         <div className="w-full h-px bg-[#E9E9EB] my-2" />
 
-        {/* Contact Details */}
         <div className="flex flex-col w-full gap-6">
           <h3 className="font-sans font-bold text-[18px] text-[#2E2B2B]">Contact Details</h3>
           
           <div className="flex items-center w-full gap-4">
-            {/* Custom Phone Input */}
             <div className="flex-1 relative flex items-center h-[42px] bg-white border border-[#E5E5E5] rounded-full focus-within:ring-1 focus-within:ring-black">
               <div
                 ref={dropdownRef}
@@ -223,7 +208,6 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-between items-center w-full pt-8 border-t border-[#E5E5E5] mt-6">
           <button
             type="button"

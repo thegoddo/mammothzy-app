@@ -23,7 +23,6 @@ export default function RadioItem({
           checked={isSelected}
           onChange={() => onSelect(label)}
         />
-        {/* Visual Circle */}
         <div
           className={`
           w-full h-full rounded-full border-2 flex items-center justify-center transition-all
