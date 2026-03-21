@@ -21,7 +21,9 @@ interface LocationDetailsFormProps {
   onComplete: () => void;
 }
 
-export default function LocationDetailsForm({ onComplete }: LocationDetailsFormProps) {
+export default function LocationDetailsForm({
+  onComplete,
+}: LocationDetailsFormProps) {
   const { formData, updateFormData, setCurrentStep } = useFormContext();
 
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
@@ -36,7 +38,10 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setShowCountryDropdown(false);
       }
     };
@@ -67,7 +72,12 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
 
   const onSubmit = (data: LocationDetailsType) => {
     updateFormData("locationDetails", data);
-    
+
+    console.log("Full Form Data Collected:", {
+      ...formData.activityDetails,
+      ...data,
+    });
+
     onComplete();
   };
 
@@ -87,8 +97,15 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
         </p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full gap-6">
-        <FormField label="Address Line 1" required error={errors.address1?.message}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col w-full gap-6"
+      >
+        <FormField
+          label="Address Line 1"
+          required
+          error={errors.address1?.message}
+        >
           <TextInput
             {...register("address1")}
             placeholder="House number and street name"
@@ -123,7 +140,11 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
           </div>
 
           <div className="flex-1">
-            <FormField label="State / Province" required error={errors.state?.message}>
+            <FormField
+              label="State / Province"
+              required
+              error={errors.state?.message}
+            >
               <div className="relative w-full h-[42px]">
                 <input
                   {...register("state")}
@@ -146,8 +167,10 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
         <div className="w-full h-px bg-[#E9E9EB] my-2" />
 
         <div className="flex flex-col w-full gap-6">
-          <h3 className="font-sans font-bold text-[18px] text-[#2E2B2B]">Contact Details</h3>
-          
+          <h3 className="font-sans font-bold text-[18px] text-[#2E2B2B]">
+            Contact Details
+          </h3>
+
           <div className="flex items-center w-full gap-4">
             <div className="flex-1 relative flex items-center h-[42px] bg-white border border-[#E5E5E5] rounded-full focus-within:ring-1 focus-within:ring-black">
               <div
@@ -157,7 +180,12 @@ export default function LocationDetailsForm({ onComplete }: LocationDetailsFormP
               >
                 <span className="text-lg mr-2">{selectedCountry.flag}</span>
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                  <path d="M1 1L5 5L9 1" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" />
+                  <path
+                    d="M1 1L5 5L9 1"
+                    stroke="#1A1A1A"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
                 </svg>
 
                 {showCountryDropdown && (

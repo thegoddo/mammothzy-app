@@ -7,14 +7,20 @@ import { Success } from "./Success";
 import { useFormContext } from "../../context/FormContext";
 
 export default function Main() {
-  const { currentStep, setCurrentStep } = useFormContext();
+  const { currentStep, setCurrentStep, resetForm, formData } = useFormContext();
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleCloseSuccess = () => {
+    setIsSubmitted(false);
+    resetForm();
+    setCurrentStep(1);
+  };
 
   return (
     <main className="relative flex flex-col w-[1440px] min-h-screen pt-8 pb-8 px-[112px] gap-[60px] bg-white border-b border-[#E7E7E7] mx-auto overflow-visible">
       {isSubmitted && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/20 backdrop-blur-sm">
-          <Success onClose={() => setIsSubmitted(false)} />
+          <Success onClose={handleCloseSuccess} />
         </div>
       )}
 
