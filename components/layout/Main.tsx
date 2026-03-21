@@ -1,35 +1,47 @@
 "use client";
+import React, { useState } from "react";
 import { Flag, MapPin } from "lucide-react";
 import ActivityDetailsForm from "../form/ActivityDetailsForm";
 import LocationDetailsForm from "../form/LocationDetailsForm";
+import { Success } from "./Success";
 import { useFormContext } from "../../context/FormContext";
 
 export default function Main() {
   const { currentStep, setCurrentStep } = useFormContext();
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
-    // Changed min-h to screen or a large value to allow scrolling
-    <main className="flex flex-col w-full max-w-6xl min-h-screen pt-8 pb-8 px-28 gap-16 bg-white border-b border-[#E7E7E7] mx-auto">
-      {/* REMOVED h-[1073px] - changed to h-auto to allow dynamic growth */}
-      <div className="flex flex-col w-full h-auto gap-8">
-        <div className="flex w-full h-auto gap-2.5">
-          <h2 className="font-sans font-bold text-2xl leading-[130%] align-middle text-[#1A1A1A]">
+    <main className="relative flex flex-col w-[1440px] min-h-screen pt-8 pb-8 px-[112px] gap-[60px] bg-white border-b border-[#E7E7E7] mx-auto overflow-visible">
+      {/* SUCCESS OVERLAY: Only shows when isSubmitted is true */}
+      {isSubmitted && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/20 backdrop-blur-sm">
+          <Success onClose={() => setIsSubmitted(false)} />
+        </div>
+      )}
+
+      <div className="flex flex-col w-[1216px] h-auto gap-[32px] overflow-visible">
+        <div className="flex w-full h-auto gap-[10px]">
+          <h2 className="font-sans font-bold text-[24px] leading-[130%] text-[#1A1A1A]">
             Create new Activity
           </h2>
         </div>
-        <div className="flex flex-row gap-8">
-          <aside className="sticky top-[180px] flex flex-col w-56 bg-white z-10 gap-2 self-start">
+
+        <div className="flex flex-row items-stretch gap-8 overflow-visible">
+          {/* Sidebar */}
+          <aside className="sticky top-[100px] flex flex-col w-[212px] shrink-0 bg-white z-10 gap-2 self-start h-fit">
             <button
               type="button"
               onClick={() => setCurrentStep(1)}
-              className={`flex w-full h-12 items-center px-4 py-2 gap-3 rounded-lg transition-all text-left ${
+              className={`flex w-full h-[48px] items-center px-4 py-2 gap-[12px] rounded-[8px] transition-all text-left ${
                 currentStep === 1
                   ? "bg-[#FAFAFB] shadow-[0px_1px_2px_0px_#55494B0D] text-[#1A1A1A] font-bold"
                   : "bg-transparent text-[#8A8A8A] font-medium hover:bg-gray-50"
               }`}
             >
-              <Flag className="w-5 h-5" />
-              <span className="text-[15px] leading-6 whitespace-nowrap">
+              <Flag
+                className={`w-5 h-5 ${currentStep === 1 ? "text-[#1A1A1A]" : "text-[#8A8A8A]"}`}
+              />
+              <span className="text-[15px] font-medium leading-6 whitespace-nowrap">
                 Activity Details
               </span>
             </button>
@@ -37,22 +49,33 @@ export default function Main() {
             <button
               type="button"
               onClick={() => setCurrentStep(2)}
-              className={`flex w-full h-12 items-center px-4 py-2 gap-3 rounded-lg transition-all text-left ${
+              className={`flex w-full h-[48px] items-center px-4 py-2 gap-[12px] rounded-[8px] transition-all text-left ${
                 currentStep === 2
                   ? "bg-[#FAFAFB] shadow-[0px_1px_2px_0px_#55494B0D] text-[#1A1A1A] font-bold"
                   : "bg-transparent text-[#8A8A8A] font-medium hover:bg-gray-50"
               }`}
             >
-              <MapPin className="w-5 h-5" />
-              <span className="text-[15px] leading-6 whitespace-nowrap">
+              <MapPin
+                className={`w-5 h-5 ${currentStep === 2 ? "text-[#1A1A1A]" : "text-[#8A8A8A]"}`}
+              />
+              <span className="text-[15px] font-medium leading-6 whitespace-nowrap">
                 Location Details
               </span>
             </button>
           </aside>
-          <div className="w-px bg-[#E7E7E7] self-stretch" />
-          <div className="flex-1">
+
+          {/* Vertical Divider */}
+          <div
+            className="w-px bg-[#E7E7E7] transition-all duration-500 ease-in-out shrink-0"
+            style={{ height: currentStep === 1 ? "1010px" : "676px" }}
+          />
+
+          {/* Form Content Area */}
+          <div className="flex-1 min-w-0">
             {currentStep === 1 && <ActivityDetailsForm />}
-            {currentStep === 2 && <LocationDetailsForm />}
+            {currentStep === 2 && (
+              <LocationDetailsForm onComplete={() => setIsSubmitted(true)} />
+            )}
           </div>
         </div>
       </div>
