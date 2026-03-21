@@ -17,7 +17,7 @@ export default function Main() {
             Create new Activity
           </h2>
         </div>
-        <div className="flex flex-row items-start gap-8">
+        <div className="flex flex-row gap-8">
           <aside className="sticky top-[180px] flex flex-col w-56 bg-white z-10 gap-2 self-start">
             <button
               type="button"
